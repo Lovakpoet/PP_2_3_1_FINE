@@ -3,16 +3,16 @@ package web.service;
 import java.util.List;
 import web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import web.dao.UserDAO;
+import web.dao.UserDao;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserDAO userDAO;
+    private final UserDao userDAO;
 
     @Autowired
-    public UserServiceImpl(UserDAO userDAO) {
+    public UserServiceImpl(UserDao userDAO) {
         this.userDAO = userDAO;
     }
 

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Transactional
 @Repository
-public class UserDAOImpl implements UserDAO{
+public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
     private EntityManager em;
