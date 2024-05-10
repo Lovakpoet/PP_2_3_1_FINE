@@ -17,6 +17,7 @@ import org.springframework.dao.annotation.PersistenceExceptionTranslationPostPro
 import javax.sql.DataSource;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 
 @Configuration
@@ -25,6 +26,7 @@ import java.util.Properties;
 @ComponentScan(value = "web")
 public class AppConfig {
     private final Environment env;
+    private static final Logger log = Logger.getLogger(AppConfig.class.getName());
 
     @Autowired
     public AppConfig(Environment env) {
@@ -54,6 +56,7 @@ public class AppConfig {
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(properties);
+        log.info("entity manager factory created");
         return em;
     }
 
@@ -61,6 +64,7 @@ public class AppConfig {
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+        log.info("transaction manager created");
         return transactionManager;
     }
 
